@@ -29,7 +29,6 @@ export class App extends Component {
   componentDidUpdate(__, prevstate) {
     if (this.state.contacts !== prevstate.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-      console.log('states difference');
     }
   }
 
@@ -46,26 +45,20 @@ export class App extends Component {
     const checkNumber = this.state.contacts.find(
       contact => contact.number.toLowerCase() === number.toLowerCase()
     );
-
     if (checkName) {
       return alert(`${name} is already in contacts.`);
     }
-
     if (checkNumber) {
       return alert(`This phone number is already in use.`);
     }
-
     const contact = {
       name,
       number,
       id: nanoid(),
     };
-
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
-    console.log(contact);
-    console.log(this.state);
   };
 
   changeFilter = e => {
