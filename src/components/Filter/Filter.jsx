@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Label, Input, ErrorNotify } from './Filter.styled';
@@ -26,3 +27,8 @@ export default function Filter({ value, onChange }) {
     </Formik>
   );
 }
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

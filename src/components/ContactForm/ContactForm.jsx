@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import {
@@ -44,3 +45,7 @@ export default function ContactForm({ onSubmit }) {
     </Formik>
   );
 }
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
