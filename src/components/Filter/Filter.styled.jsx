@@ -1,4 +1,3 @@
-import { Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 export const Label = styled.label`
@@ -7,7 +6,7 @@ export const Label = styled.label`
   margin-right: 30px;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   display: block;
   margin: 10px 0 15px 0;
   padding: 10px;
@@ -15,6 +14,6 @@ export const Input = styled(Field)`
   border: 1px solid #ccc;
 `;
 
-export const ErrorNotify = styled(ErrorMessage)`
-  color: red;
-`;
+// export const ErrorNotify = styled(ErrorMessage)`
+//   color: red;
+// `;

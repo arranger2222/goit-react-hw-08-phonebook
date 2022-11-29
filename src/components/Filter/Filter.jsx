@@ -1,34 +1,31 @@
-import PropTypes from 'prop-types';
-import { Formik } from 'formik';
-import * as yup from 'yup';
-import { Label, Input, ErrorNotify } from './Filter.styled';
+import { useSelector, useDispatch } from 'react-redux';
 
-const schema = yup.object().shape({
-  filter: yup.string(),
-});
+import { filterValue } from 'redux/filterSlice';
+import { getFilterValue } from 'redux/selectors';
 
-const initialValues = {
-  filter: '',
-};
+import { Label, Input } from 'components/Filter/Filter.styled';
 
-export default function Filter({ value, onChange }) {
+export const Filter = () => {
+  const filter = useSelector(getFilterValue);
+  const dispatch = useDispatch();
+  const handleFilterChange = e => {
+    dispatch(filterValue(e.currentTarget.value));
+  };
+
   return (
-    <Formik initialValues={initialValues} validationSchema={schema}>
+    <>
       <Label htmlFor="filter">
         <Input
           type="text"
           name="filter"
           placeholder="Filter"
-          value={value}
-          onChange={onChange}
+          value={filter}
+          onChange={handleFilterChange}
+          autoComplete="off"
         />
-        <ErrorNotify name="filter" component="div" />
       </Label>
-    </Formik>
+    </>
   );
-}
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
+
+export default Filter;
