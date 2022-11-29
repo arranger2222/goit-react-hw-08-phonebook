@@ -14,7 +14,6 @@ export const App = () => {
 
       <Section>
         <H2>Contacts</H2>
-
         <ContactList />
       </Section>
     </Container>
