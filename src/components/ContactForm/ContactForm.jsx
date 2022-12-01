@@ -1,10 +1,9 @@
+// import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addContact } from 'redux/itemsSlice';
-import { getContacts } from 'redux/selectors';
-
-import { nanoid } from 'nanoid';
+import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 import {
   FormStyled,
@@ -13,10 +12,10 @@ import {
   Button,
 } from 'components/ContactForm/ContactForm.styled';
 
-export const ContactForm = () => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const isContactInList = contactName => {
@@ -35,7 +34,7 @@ export const ContactForm = () => {
     }
 
     const contactItem = {
-      id: nanoid(),
+      // id: nanoid(),
       name,
       number,
     };
@@ -101,3 +100,5 @@ export const ContactForm = () => {
     </FormStyled>
   );
 };
+
+export default ContactForm;

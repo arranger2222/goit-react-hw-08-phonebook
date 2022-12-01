@@ -1,26 +1,35 @@
 import { useSelector } from 'react-redux';
-import { getFilterValue, getContacts } from 'redux/selectors';
+import {
+  selectFiltredContacts,
+  selectIsLoading,
+  selectError,
+} from 'redux/selectors';
 
 import { ContactItem } from '../ContactItem/ContactItem';
 
 import { List, Item } from 'components/ContactList/ContactList.styled';
 
 export function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilterValue);
-
-  const filtredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const filtredContacts = useSelector(selectFiltredContacts);
 
   return (
-    <List>
-      {filtredContacts.map(({ id, name, number }) => (
-        <Item key={id}>
-          <ContactItem id={id} name={name} number={number} />
-        </Item>
-      ))}
-    </List>
+    <>
+      {isLoading && !error && <p>Loading contacts...</p>}
+      {error && <p>{error}</p>}
+      {filtredContacts.length > 0 && !error ? (
+        <List>
+          {filtredContacts.map(({ id, name, number }) => (
+            <Item key={id}>
+              <ContactItem id={id} name={name} number={number} />
+            </Item>
+          ))}
+        </List>
+      ) : (
+        !isLoading && <p>Not found any contact :(</p>
+      )}
+    </>
   );
 }
 export default ContactList;
