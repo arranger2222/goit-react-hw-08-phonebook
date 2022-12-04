@@ -39,26 +39,3 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
-
-// WITHOUT THUNK
-
-// import {
-//   fetchingInProgress,
-//   fetchingSuccess,
-//   fetchingError,
-// } from 'redux/itemsSlice';
-
-// axios.defaults.baseURL =
-//   'https://6332e80c573c03ab0b53841c.mockapi.io/phonebook';
-
-// export const fetchContacts = () => async dispatch => {
-//   try {
-//     dispatch(fetchingInProgress());
-
-//     const { data } = await axios.get('/contacts');
-
-//     dispatch(fetchingSuccess(data));
-//   } catch (e) {
-//     dispatch(fetchingError(e.message));
-//   }
-// };
