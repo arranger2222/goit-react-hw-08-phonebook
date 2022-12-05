@@ -46,8 +46,6 @@ const ContactForm = () => {
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-    console.log(name);
-    console.log(value);
     switch (name) {
       case 'name':
         setName(value);
