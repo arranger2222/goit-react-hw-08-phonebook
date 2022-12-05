@@ -33,9 +33,9 @@ export function ContactList() {
       {error && <p>{error}</p>}
       {filtredContacts.length > 0 && !error ? (
         <List>
-          {filtredContacts.map(({ id, name, phone }) => (
+          {filtredContacts.map(({ id, name, number }) => (
             <Item key={id}>
-              <ContactItem id={id} name={name} phone={phone} />
+              <ContactItem id={id} name={name} number={number} />
             </Item>
           ))}
         </List>

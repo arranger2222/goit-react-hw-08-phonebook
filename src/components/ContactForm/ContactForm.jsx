@@ -25,7 +25,7 @@ const ContactForm = () => {
     );
   };
 
-  const handleFormormSubmit = e => {
+  const handleFormSubmit = e => {
     e.preventDefault();
 
     if (isContactInList(name)) {
@@ -46,7 +46,8 @@ const ContactForm = () => {
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-
+    console.log(name);
+    console.log(value);
     switch (name) {
       case 'name':
         setName(value);
@@ -67,7 +68,7 @@ const ContactForm = () => {
   }
 
   return (
-    <FormStyled onSubmit={handleFormormSubmit}>
+    <FormStyled onSubmit={handleFormSubmit}>
       <Label>
         <Input
           type="text"
