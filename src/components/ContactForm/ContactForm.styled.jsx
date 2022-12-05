@@ -32,7 +32,3 @@ export const Button = styled.button`
   }
 `;
 
-// export const ErrorNotify = styled(ErrorMessage)`
-//   color: red;
-//   font-size: 12px;
-// `;

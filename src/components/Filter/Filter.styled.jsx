@@ -13,7 +13,3 @@ export const Input = styled.input`
   width: 250px;
   border: 1px solid #ccc;
 `;
-
-// export const ErrorNotify = styled(ErrorMessage)`
-//   color: red;
-// `;

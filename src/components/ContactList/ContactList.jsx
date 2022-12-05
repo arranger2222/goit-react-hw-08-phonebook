@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { ThreeCircles } from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import {
   selectFiltredContacts,
   selectIsLoading,

@@ -3,6 +3,7 @@ import { fetchContacts, addContact, deleteContact } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
+  state.error = null;
 };
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
@@ -32,7 +33,6 @@ export const itemsSlice = createSlice({
         ),
         state => {
           state.isLoading = false;
-          state.error = null;
         }
       )
       .addMatcher(
@@ -52,5 +52,3 @@ export const itemsSlice = createSlice({
         handleRejected
       ),
 });
-
-// export const { addContact, deleteContact } = itemsSlice.actions;

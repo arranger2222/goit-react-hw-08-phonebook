@@ -95,7 +95,7 @@ const ContactForm = () => {
         />
       </Label>
       <Button title="add contact" type="submit">
-        Submit
+        Add contact
       </Button>
     </FormStyled>
   );
