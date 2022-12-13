@@ -1,48 +1,43 @@
 import { useSelector } from 'react-redux';
-import { ThreeCircles } from 'react-loader-spinner';
 import {
   selectFiltredContacts,
   selectIsLoading,
   selectError,
 } from 'redux/selectors';
 
-import { ContactItem } from '../ContactItem/ContactItem';
-import { List, Item } from 'components/ContactList/ContactList.styled';
+import { ContactItem } from 'components/ContactItem/ContactItem';
+import { Snack } from 'components/Snack/Snack';
 
-export function ContactList() {
+import { Container, Grid, Box, CircularProgress } from '@mui/material';
+
+export default function ContactList() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const filtredContacts = useSelector(selectFiltredContacts);
 
   return (
     <>
-      {isLoading && !error && (
-        <ThreeCircles
-          height="100"
-          width="100"
-          color="#f8a035"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="three-circles-rotating"
-          outerCircleColor=""
-          innerCircleColor=""
-          middleCircleColor=""
-        />
-      )}
-      {error && <p>{error}</p>}
-      {filtredContacts.length > 0 && !error ? (
-        <List>
-          {filtredContacts.map(({ id, name, number }) => (
-            <Item key={id}>
-              <ContactItem id={id} name={name} number={number} />
-            </Item>
-          ))}
-        </List>
-      ) : (
-        !isLoading && <p>Not found any contact :(</p>
-      )}
+      <Container component="section" sx={{ marginTop: 2 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          {isLoading && !error && <CircularProgress sx={{ mt: 4 }} />}
+          {error && <p>{error}</p>}
+          {filtredContacts.length > 0 && !error ? (
+            <Grid container spacing={2} sx={{ marginTop: 1 }}>
+              {filtredContacts.map(({ id, name, number }) => (
+                <ContactItem key={id} id={id} name={name} number={number} />
+              ))}
+            </Grid>
+          ) : (
+            !isLoading && <Snack type="error" text="Not found any contact :(" />
+          )}
+        </Box>
+      </Container>
     </>
   );
 }
-export default ContactList;

@@ -1,22 +1,28 @@
-// import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
+import { Snack } from 'components/Snack/Snack';
 
+import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
 import {
-  FormStyled,
-  Label,
-  Input,
+  Avatar,
   Button,
-} from 'components/ContactForm/ContactForm.styled';
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Container,
+} from '@mui/material';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+
+  const [isSnackOpen, setIsSnackOpen] = useState(false);
 
   const isContactInList = contactName => {
     const lowercaseName = contactName.toLowerCase();
@@ -34,18 +40,20 @@ const ContactForm = () => {
     }
 
     const contactItem = {
-      // id: nanoid(),
       name,
       number,
     };
 
     dispatch(addContact(contactItem));
 
+    setIsSnackOpen(true);
+
     reset();
   };
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
+
     switch (name) {
       case 'name':
         setName(value);
@@ -66,37 +74,74 @@ const ContactForm = () => {
   }
 
   return (
-    <FormStyled onSubmit={handleFormSubmit}>
-      <Label>
-        <Input
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          value={name}
-          onChange={handleInputChange}
-          placeholder="Name"
-          autoComplete="off"
+    <>
+      {isSnackOpen && (
+        <Snack
+          isOpen={isSnackOpen}
+          handleClose={() => {
+            setIsSnackOpen(false);
+          }}
+          text="Contact created"
+          type="success"
         />
-      </Label>
-      <Label>
-        <Input
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={number}
-          onChange={handleInputChange}
-          placeholder="Number"
-          autoComplete="off"
-        />
-      </Label>
-      <Button title="add contact" type="submit">
-        Add contact
-      </Button>
-    </FormStyled>
+      )}
+      <Container component="section" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <PersonAddRoundedIcon />
+          </Avatar>
+
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleFormSubmit}
+            sx={{ mt: 3 }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  value={name}
+                  onChange={handleInputChange}
+                  autoComplete="given-name"
+                  name="name"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  value={number}
+                  onChange={handleInputChange}
+                  required
+                  fullWidth
+                  id="number"
+                  label="Phone number"
+                  name="number"
+                  autoComplete="tel"
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Create contact
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </>
   );
 };
 
