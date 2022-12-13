@@ -8,4 +8,15 @@ const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   return isLoggedIn ? <Navigate to={redirectTo} /> : <Component />;
 };
 
+// const PublicRoute = ({ children, restricted = false, ...routeProps }) => {
+//   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
+//   const shouldRedirect = isLoggedIn && restricted;
+
+//   return (
+//     <Route {...routeProps}>
+//       {shouldRedirect ? <Navigate to="/" /> : children}
+//     </Route>
+//   );
+// };
+
 export default RestrictedRoute;

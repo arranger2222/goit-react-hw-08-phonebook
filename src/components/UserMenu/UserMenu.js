@@ -3,15 +3,7 @@ import authOperations from 'redux/auth/authOperations';
 import authSelectors from 'redux/auth/authSelectors';
 import { useState } from 'react';
 
-import {
-  Box,
-  IconButton,
-  Typography,
-  Menu,
-  Avatar,
-  Tooltip,
-  MenuItem,
-} from '@mui/material';
+import {Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem} from '@mui/material';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
