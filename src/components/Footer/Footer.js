@@ -1,11 +1,12 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import { FooterStyled } from './Footer.styled';
 
 export default function Footer() {
   return (
     <>
-      <Box
+      <FooterStyled
         component="footer"
         sx={{
           position: 'absolute',
@@ -19,14 +20,14 @@ export default function Footer() {
         }}
       >
         <Copyright />
-      </Box>
+      </FooterStyled>
     </>
   );
 }
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="white" align="center" {...props}>
+    <footer>
       {'Copyright © '}
       <Link
         color="inherit"
@@ -38,6 +39,6 @@ function Copyright(props) {
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
-    </Typography>
+    </footer>
   );
 }

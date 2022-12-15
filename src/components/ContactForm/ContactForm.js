@@ -1,20 +1,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import {
+  FormStyled,
+  Label,
+  Input,
+  Button,
+} from 'components/ContactForm/ContactForm.styled';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 import { Snack } from 'components/Snack/Snack';
-
-import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  Grid,
-  Box,
-  Container,
-} from '@mui/material';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -85,62 +79,52 @@ export const ContactForm = () => {
           type="success"
         />
       )}
-      <Container component="section" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <PersonAddRoundedIcon />
-          </Avatar>
+      <FormStyled onSubmit={handleFormSubmit}>
+        <Label>
+          <Input
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            value={name}
+            onChange={handleInputChange}
+            placeholder="Name"
+            autoComplete="off"
+          />
+        </Label>
+        <Label>
+          <Input
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            value={number}
+            onChange={handleInputChange}
+            placeholder="Number"
+            autoComplete="off"
+          />
+        </Label>
+        <Button title="add contact" type="submit">
+          Add contact
+        </Button>
+      </FormStyled>
+    </>
+  );
+};
 
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleFormSubmit}
-            sx={{ mt: 3 }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  value={name}
-                  onChange={handleInputChange}
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  value={number}
-                  onChange={handleInputChange}
-                  required
-                  fullWidth
-                  id="number"
-                  label="Phone number"
-                  name="number"
-                  autoComplete="tel"
-                />
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Create contact
-            </Button>
-          </Box>
-        </Box>
-      </Container>
+export const ContactFormDisabled = () => {
+  return (
+    <>
+      <FormStyled>
+        <Label>
+          <Input placeholder="Name" autoComplete="off" disabled />
+        </Label>
+        <Label>
+          <Input placeholder="Number" autoComplete="off" disabled />
+        </Label>
+      </FormStyled>
     </>
   );
 };

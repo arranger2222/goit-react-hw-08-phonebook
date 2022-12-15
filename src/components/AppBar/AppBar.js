@@ -7,9 +7,9 @@ import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
 import Footer from 'components/Footer/Footer';
-
+import { AppBarStyled } from './AppBar.styled';
 import {
-  AppBar,
+  // AppBar,
   Toolbar,
   Container,
   CircularProgress,
@@ -21,14 +21,14 @@ export default function StyledAppBar() {
 
   return (
     <>
-      <AppBar position="static" component="header">
+      <AppBarStyled>
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Navigation />
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBarStyled>
 
       <Suspense
         fallback={

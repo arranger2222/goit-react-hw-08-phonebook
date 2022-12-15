@@ -4,12 +4,11 @@ import authSelectors from 'redux/auth/authSelectors';
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
+// import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
@@ -25,9 +24,9 @@ const Navigation = () => {
     setTabValue(newValue);
   };
 
-  const handleOpenNavMenu = event => {
-    setAnchorElNav(event.currentTarget);
-  };
+  // const handleOpenNavMenu = event => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -51,40 +50,7 @@ const Navigation = () => {
 
   return (
     <>
-      <MenuBookRoundedIcon
-        sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-      />
-
-      <Typography
-        variant="h6"
-        noWrap
-        component="a"
-        href="/goit-react-hw-08-phonebook/"
-        sx={{
-          mr: 2,
-          display: { xs: 'none', md: 'flex' },
-          fontFamily: 'monospace',
-          fontWeight: 700,
-          letterSpacing: '.3rem',
-          color: 'inherit',
-          textDecoration: 'none',
-        }}
-      >
-        PHONEBOOK
-      </Typography>
-
-      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleOpenNavMenu}
-          color="inherit"
-        >
-          <MenuIcon />
-        </IconButton>
-
+      <>
         <Menu
           id="menu-appbar"
           anchorEl={anchorElNav}
@@ -103,41 +69,16 @@ const Navigation = () => {
             display: { xs: 'block', md: 'none' },
           }}
         >
-          {/* {pages.map(page => ( */}
           <MenuItem onClick={handleCloseHomeNavButton}>
-            <Typography textAlign="center">Home</Typography>
+            <Typography textAlign="center">Phonebook</Typography>
           </MenuItem>
-
           <MenuItem onClick={handleCloseContactsNavButton}>
             <Typography textAlign="center">Contacts</Typography>
           </MenuItem>
 
           {/* ))} */}
         </Menu>
-      </Box>
-
-      <MenuBookRoundedIcon
-        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-      />
-
-      <Typography
-        variant="h5"
-        noWrap
-        component="a"
-        href=""
-        sx={{
-          mr: 2,
-          display: { xs: 'flex', md: 'none' },
-          flexGrow: 1,
-          fontFamily: 'monospace',
-          fontWeight: 700,
-          letterSpacing: '.3rem',
-          color: 'inherit',
-          textDecoration: 'none',
-        }}
-      >
-        PHONEBOOK
-      </Typography>
+      </>
 
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
         <Tabs
@@ -150,7 +91,7 @@ const Navigation = () => {
         >
           <Tab
             value="home"
-            label="Home"
+            label="Phonebook"
             onClick={handleCloseHomeNavButton}
             sx={{ my: 2, color: 'white', display: 'block' }}
           />
