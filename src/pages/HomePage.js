@@ -1,6 +1,7 @@
 import { Link } from '@mui/material';
-import { ContactFormDisabled } from 'components/ContactForm/ContactForm';
 import { useNavigate } from 'react-router-dom/dist';
+
+import { ContactFormDisabled } from 'components/ContactForm/ContactForm';
 import { Container } from 'utils/Container';
 import { Section, SectionContent } from 'utils/Section';
 

@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist';
+import { useState } from 'react';
+
 import authOperations from 'redux/auth/authOperations';
 import authSelectors from 'redux/auth/authSelectors';
-
 import { Snack } from 'components/Snack/Snack';
-
+import { Button } from 'utils/Button';
 import {
   Container,
   Typography,
@@ -17,9 +18,6 @@ import {
   TextField,
   CircularProgress,
 } from '@mui/material';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useState } from 'react';
-import { Button } from 'utils/Button';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();

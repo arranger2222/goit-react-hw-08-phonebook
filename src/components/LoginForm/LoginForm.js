@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist';
+
 import authOperations from 'redux/auth/authOperations';
 import authSelectors from 'redux/auth/authSelectors';
 import { Snack } from 'components/Snack/Snack';
@@ -17,7 +18,6 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Button } from 'utils/Button';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

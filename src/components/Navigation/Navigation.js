@@ -1,16 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import authSelectors from 'redux/auth/authSelectors';
 import { useState } from 'react';
-
-import Box from '@mui/material/Box';
-// import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-// import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+
+import authSelectors from 'redux/auth/authSelectors';
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
@@ -23,10 +21,6 @@ const Navigation = () => {
   const handleTabChange = (_, newValue) => {
     setTabValue(newValue);
   };
-
-  // const handleOpenNavMenu = event => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);

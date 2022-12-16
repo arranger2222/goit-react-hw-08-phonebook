@@ -1,4 +1,5 @@
 import Link from '@mui/material/Link';
+
 import { FooterStyled } from './Footer.styled';
 
 export default function Footer() {

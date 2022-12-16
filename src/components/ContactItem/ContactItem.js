@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-
 import { deleteContact } from 'redux/operations';
-
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+
 import { Button } from './ContactItem.styled';
 
 export function ContactItem({ id, name, number }) {

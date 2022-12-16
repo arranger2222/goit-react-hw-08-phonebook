@@ -14,3 +14,8 @@ export const Item = styled.li`
   border-bottom: 1px solid #ccc;
   padding: 20px;
 `;
+
+export const SpinnerBox = styled.div`
+  width: 100px;
+  margin: auto;
+`;

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ThreeCircles } from 'react-loader-spinner';
+
 import {
   selectFiltredContacts,
   selectIsLoading,
@@ -8,8 +9,7 @@ import {
 
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { Snack } from 'components/Snack/Snack';
-
-import { Item, List } from './ContactList.styled';
+import { Item, List, SpinnerBox } from './ContactList.styled';
 
 export function ContactList() {
   const isLoading = useSelector(selectIsLoading);
@@ -19,18 +19,17 @@ export function ContactList() {
   return (
     <>
       {isLoading && !error && (
-        <ThreeCircles
-          height="100"
-          width="100"
-          color="#f8a035"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="three-circles-rotating"
-          outerCircleColor=""
-          innerCircleColor=""
-          middleCircleColor=""
-        />
+        <SpinnerBox>
+          <ThreeCircles
+            height="100"
+            width="100"
+            color="#f8a035"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="three-circles-rotating"
+          />
+        </SpinnerBox>
       )}
       {error && <p>{error}</p>}
       {filtredContacts.length > 0 && !error ? (
