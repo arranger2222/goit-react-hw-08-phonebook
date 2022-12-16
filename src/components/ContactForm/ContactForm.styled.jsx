@@ -32,3 +32,10 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonDisabled = styled.button`
+  padding: 10px 30px;
+  background: #ccc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+`;

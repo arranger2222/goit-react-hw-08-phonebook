@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { ThreeCircles } from 'react-loader-spinner';
 import {
   selectFiltredContacts,
   selectIsLoading,
@@ -8,7 +9,7 @@ import {
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { Snack } from 'components/Snack/Snack';
 
-import { Container, Grid, Box, CircularProgress } from '@mui/material';
+import { Item, List } from './ContactList.styled';
 
 export function ContactList() {
   const isLoading = useSelector(selectIsLoading);
@@ -17,27 +18,32 @@ export function ContactList() {
 
   return (
     <>
-      <Container component="section" sx={{ marginTop: 2 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          {isLoading && !error && <CircularProgress sx={{ mt: 4 }} />}
-          {error && <p>{error}</p>}
-          {filtredContacts.length > 0 && !error ? (
-            <Grid container spacing={2} sx={{ marginTop: 1 }}>
-              {filtredContacts.map(({ id, name, number }) => (
-                <ContactItem key={id} id={id} name={name} number={number} />
-              ))}
-            </Grid>
-          ) : (
-            !isLoading && <Snack type="error" text="Not found any contact :(" />
-          )}
-        </Box>
-      </Container>
+      {isLoading && !error && (
+        <ThreeCircles
+          height="100"
+          width="100"
+          color="#f8a035"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="three-circles-rotating"
+          outerCircleColor=""
+          innerCircleColor=""
+          middleCircleColor=""
+        />
+      )}
+      {error && <p>{error}</p>}
+      {filtredContacts.length > 0 && !error ? (
+        <List>
+          {filtredContacts.map(({ id, name, number }) => (
+            <Item key={id}>
+              <ContactItem id={id} name={name} number={number} />
+            </Item>
+          ))}
+        </List>
+      ) : (
+        !isLoading && <Snack type="error" text="Not found any contact :(" />
+      )}
     </>
   );
 }

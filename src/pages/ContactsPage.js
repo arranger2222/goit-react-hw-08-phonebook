@@ -4,9 +4,10 @@ import { useDispatch } from 'react-redux';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
-import { Typography, Box } from '@mui/material';
 
 import { fetchContacts } from 'redux/operations';
+import { Container } from 'utils/Container';
+import { Section } from 'utils/Section';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -16,25 +17,15 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Box sx={{ pt: 2, pb: 4 }}>
+    <Container>
+      <Section>
         <ContactForm />
-        <Box
-          sx={{
-            marginTop: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Typography component="h2" variant="h4">
-            Contacts
-          </Typography>
-          <Filter />
-          <ContactList />
-        </Box>
-      </Box>
-    </>
+        <Filter />
+      </Section>
+      <Section>
+        <ContactList />
+      </Section>
+    </Container>
   );
 };
 

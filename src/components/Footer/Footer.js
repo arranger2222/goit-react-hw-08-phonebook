@@ -29,14 +29,13 @@ function Copyright(props) {
       {'Copyright © '}
       <Link
         color="inherit"
-        href="https://github.com/eugene17kotov"
+        href="https://github.com/arranger2222"
         target="_blank"
         rel="noopener noreferrer"
       >
-        My Website
+        Max_You Studio
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
     </footer>
   );
 }

@@ -5,6 +5,7 @@ import {
   Label,
   Input,
   Button,
+  ButtonDisabled,
 } from 'components/ContactForm/ContactForm.styled';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/operations';
@@ -124,6 +125,9 @@ export const ContactFormDisabled = () => {
         <Label>
           <Input placeholder="Number" autoComplete="off" disabled />
         </Label>
+        <ButtonDisabled title="add contact" disabled>
+          Add contact
+        </ButtonDisabled>
       </FormStyled>
     </>
   );

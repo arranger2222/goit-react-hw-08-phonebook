@@ -3,11 +3,19 @@ import authOperations from 'redux/auth/authOperations';
 import authSelectors from 'redux/auth/authSelectors';
 import { useState } from 'react';
 
-import {Box, IconButton, Typography, Menu, Avatar, Tooltip, MenuItem} from '@mui/material';
+import {
+  Box,
+  IconButton,
+  Typography,
+  Menu,
+  Avatar,
+  Tooltip,
+  MenuItem,
+} from '@mui/material';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const { name, email } = useSelector(authSelectors.selectUser);
+  const { name } = useSelector(authSelectors.selectUser);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = event => {
@@ -26,17 +34,7 @@ const UserMenu = () => {
 
   return (
     <>
-      <Typography
-        sx={{
-          mr: 2,
-          display: { xs: 'none', md: 'flex' },
-          fontWeight: 700,
-          color: 'inherit',
-          textDecoration: 'none',
-        }}
-      >
-        Welcome, {email}
-      </Typography>
+      <p>Welcome, {name} :)</p>
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title="Open settings">
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

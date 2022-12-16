@@ -7,7 +7,7 @@ import Navigation from 'components/Navigation/Navigation';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
 import Footer from 'components/Footer/Footer';
-import { AppBarStyled } from './AppBar.styled';
+
 import {
   // AppBar,
   Toolbar,
@@ -15,6 +15,7 @@ import {
   CircularProgress,
   Box,
 } from '@mui/material';
+import { AppBarStyled } from 'utils/Header';
 
 export default function StyledAppBar() {
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);

@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom/dist';
 import authOperations from 'redux/auth/authOperations';
 import authSelectors from 'redux/auth/authSelectors';
-
 import { Snack } from 'components/Snack/Snack';
 
 import {
@@ -15,11 +14,10 @@ import {
   FormControlLabel,
   CssBaseline,
   TextField,
-  Button,
-  Avatar,
   CircularProgress,
 } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Button } from 'utils/Button';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -73,9 +71,6 @@ export const LoginForm = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -109,14 +104,7 @@ export const LoginForm = () => {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
+              <Button type="submit">Sign In</Button>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

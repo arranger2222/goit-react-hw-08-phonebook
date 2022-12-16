@@ -15,12 +15,11 @@ import {
   FormControlLabel,
   CssBaseline,
   TextField,
-  Button,
-  Avatar,
   CircularProgress,
 } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from 'react';
+import { Button } from 'utils/Button';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -85,9 +84,6 @@ export const RegisterForm = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>

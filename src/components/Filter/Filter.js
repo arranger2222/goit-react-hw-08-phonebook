@@ -2,8 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { filterValue } from 'redux/filterSlice';
 import { selectFilterValue } from 'redux/selectors';
-
-import { TextField, Container } from '@mui/material';
+import { Input, Label } from './Filter.styled';
 
 export const Filter = () => {
   const filter = useSelector(selectFilterValue);
@@ -14,28 +13,17 @@ export const Filter = () => {
 
   return (
     <>
-      <Container
-        component="section"
-        maxWidth="sm"
-        sx={{
-          marginTop: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <TextField
+      {' '}
+      <Label>
+        <Input
           value={filter}
           onChange={handleFilterChange}
           name="filter"
-          fullWidth
+          placeholder="Filter"
           id="filter"
-          label="Find by name"
-          sx={{
-            marginTop: 2,
-          }}
+          autoComplete="off"
         />
-      </Container>
+      </Label>
     </>
   );
 };
