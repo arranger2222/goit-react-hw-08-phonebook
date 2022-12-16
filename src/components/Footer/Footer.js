@@ -1,5 +1,3 @@
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import { FooterStyled } from './Footer.styled';
 
